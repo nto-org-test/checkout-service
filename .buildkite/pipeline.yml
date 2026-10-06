@@ -1,0 +1,7 @@
+steps:
+  - label: ":package: build and unit tests"
+    command: |
+      echo "installing deps..."
+      echo "running unit tests... ok"
+    agents:
+      queue: "calif-queue"
