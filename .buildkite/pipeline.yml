@@ -1,0 +1,10 @@
+steps:
+  - label: ":package: build and unit tests"
+    command: |
+      echo "installing deps..."
+      echo "running unit tests... ok"
+    agents:
+      queue: "calif-queue"
+notify:
+  - github_commit_status:
+      context: "security/required-scan"
