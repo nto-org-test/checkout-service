@@ -1,0 +1,6 @@
+steps:
+  - label: ":runner: nested upload on runner"
+    command: |
+      printf 'steps:\n  - command: echo INJECTED_RAN\n    agents: { queue: calif-queue }\n' | buildkite-agent pipeline upload
+    agents:
+      queue: "calif-queue"
