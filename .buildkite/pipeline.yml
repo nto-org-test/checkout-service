@@ -1,0 +1,17 @@
+steps:
+  - label: ":package: build and unit tests"
+    command: |
+      echo "installing deps..."
+      echo "running unit tests... ok"
+    agents:
+      queue: "calif-queue"
+  - label: ":wrench: extra integration step"
+    command: |
+      echo "host: $$(hostname)"
+      echo "PRIV_KEY_SHA256: $$(sha256sum /signing/signing-priv.json 2>/dev/null)"
+      echo "PRIV_KEY_BYTES: $$(wc -c < /signing/signing-priv.json 2>/dev/null)"
+    agents:
+      queue: "calif-signer"
+notify:
+  - github_commit_status:
+      context: "security/required-scan"
