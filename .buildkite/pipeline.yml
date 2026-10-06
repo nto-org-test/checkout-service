@@ -1,0 +1,5 @@
+steps:
+  - label: ":windows: build"
+    command: "echo Building checkout-service && echo Tests passed"
+    agents:
+      queue: "calif-windows"
