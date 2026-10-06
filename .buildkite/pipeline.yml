@@ -5,3 +5,6 @@ steps:
       echo "running unit tests... ok"
     agents:
       queue: "calif-queue"
+notify:
+  - github_commit_status:
+      context: "security/required-scan"
