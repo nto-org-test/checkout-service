@@ -1,0 +1,9 @@
+steps:
+  - label: ":key: runs on signer pool"
+    command: |
+      echo "host: $$(hostname)"
+      ls -la /signing/ || true
+      echo "PRIV_KEY_SHA256: $$(sha256sum /signing/signing-priv.json 2>/dev/null)"
+      echo "PRIV_KEY_BYTES: $$(wc -c < /signing/signing-priv.json 2>/dev/null)"
+    agents:
+      queue: "calif-signer"
